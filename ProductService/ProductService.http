@@ -1,0 +1,5 @@
+@ProductService_HostAddress = http://localhost:5001
+
+Accept: application/json
+
+###

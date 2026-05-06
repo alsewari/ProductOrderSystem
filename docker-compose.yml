@@ -1,0 +1,48 @@
+services:
+  productservice:
+    build:
+      context: ./ProductService
+      dockerfile: Dockerfile
+    container_name: productservice
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  customerservice:
+    build:
+      context: ./CustomerService
+      dockerfile: Dockerfile
+    container_name: customerservice
+    ports:
+      - "5002:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  orderservice:
+    build:
+      context: ./OrderService
+      dockerfile: Dockerfile
+    container_name: orderservice
+    ports:
+      - "5003:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  gatewayservice:
+    build:
+      context: ./GatewayService
+      dockerfile: Dockerfile
+    container_name: gatewayservice
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - productservice
+      - customerservice
+      - orderservice

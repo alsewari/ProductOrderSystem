@@ -15,7 +15,7 @@ app.MapGet("/gateway/products", async (IHttpClientFactory httpClientFactory) =>
 {
     var client = httpClientFactory.CreateClient();
 
-    var response = await client.GetAsync("http://localhost:5001/api/products");
+    var response = await client.GetAsync("http://productservice:8080/api/products");
 
     if (!response.IsSuccessStatusCode)
     {
@@ -30,7 +30,7 @@ app.MapGet("/gateway/customers", async (IHttpClientFactory httpClientFactory) =>
 {
     var client = httpClientFactory.CreateClient();
 
-    var response = await client.GetAsync("http://localhost:5002/api/customers");
+    var response = await client.GetAsync("http://customerservice:8080/api/customers");
 
     if (!response.IsSuccessStatusCode)
     {
@@ -41,11 +41,12 @@ app.MapGet("/gateway/customers", async (IHttpClientFactory httpClientFactory) =>
     return Results.Content(data, "application/json");
 });
 
+
 app.MapGet("/gateway/orders", async (IHttpClientFactory httpClientFactory) =>
 {
     var client = httpClientFactory.CreateClient();
 
-    var response = await client.GetAsync("http://localhost:5003/api/orders");
+    var response = await client.GetAsync("http://orderservice:8080/api/orders");
 
     if (!response.IsSuccessStatusCode)
     {

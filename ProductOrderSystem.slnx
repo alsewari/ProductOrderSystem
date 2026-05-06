@@ -3,4 +3,6 @@
   <Project Path="GatewayService/GatewayService.csproj" />
   <Project Path="OrderService/OrderService.csproj" />
   <Project Path="ProductService/ProductService.csproj" />
+  <Project Path="ProductService/docker-compose.yml" />
+
 </Solution>
